@@ -1,17 +1,32 @@
 {% load staticfiles %}
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Jimsab Blog</title>
+        <title>Jimsab</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog1.css' %}">
     </head>
     <body>
-        <body>
-    <div class="page-header">
-        <h1><a href="/">Jimsab Blog</a></h1>
-    </div>
+
+	<div class="page-header">
+		{% if user.is_authenticated %}
+			<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+			<a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+			<p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+		{% else %}
+			<a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+		{% endif %}
+		<h1><a href="/">Jimsab</a></h1>
+	</div>
+	
+	
+
+	
     <div class="content container">
         <div class="row">
             <div class="col-md-8">
@@ -20,6 +35,88 @@
             </div>
         </div>
     </div>
-</body>
+	
+	<footer>
+    <div class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+			{% if user.is_authenticated %}
+                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                    <h3> List 1 </h3>
+                    <ul>
+                        <li> <a href="#"> Linked Item </a> </li>
+                        <li> <a href="#"> Linked Item </a> </li>
+                        <li> <a href="#"> Linked Item </a> </li>
+                        <li> <a href="#"> Linked Item </a> </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                    <h3> List 2 </h3>
+                    <ul>
+                        <li> <a href="#"> Linked Item </a> </li>
+                        <li> <a href="#"> Linked Item </a> </li>
+                        <li> <a href="#"> Linked Item </a> </li>
+                        <li> <a href="#"> Linked Item </a> </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                    <h3> List 3 </h3>
+                    <ul>
+                        <li> <a href="#"> Linked Item </a> </li>
+                        <li> <a href="#"> Linked Item </a> </li>
+                        <li> <a href="#"> Linked Item </a> </li>
+                        <li> <a href="#"> Linked Item </a> </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                    <h3> List 4 </h3>
+                    <ul>
+                        <li> <a href="#"> Linked Item </a> </li>
+                        <li> <a href="#"> Linked Item </a> </li>
+                        <li> <a href="#"> Linked Item </a> </li>
+                        <li> <a href="#"> Linked Item </a> </li>
+                    </ul>
+                </div>
+				{% endif %}
+                <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+                    <h3 class="text-center"> Jimsab </h3>
+                    <ul class="list-inline">
+                        <li>
+                            <div class="input-append newsletter-box text-center">
+                                <input type="text" class="full text-center" placeholder="Email ">
+                                <button class="btn  bg-gray" type="button"> subscribe <i class="fa fa-long-arrow-right"> </i> </button>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="social list-inline text-center">
+                        <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
+                    </ul>
+                </div>
+            </div>
+            <!--/.row--> 
+        </div>
+        <!--/.container--> 
+    </div>
+    <!--/.footer-->
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="pull-left"> Copyright © Jimsab 2017. All right reserved. </p>
+            <div class="pull-right">
+                <ul class="nav nav-pills payments">
+                	<li><i class="fa fa-cc-visa"></i></li>
+                    <li><i class="fa fa-cc-mastercard"></i></li>
+                    <li><i class="fa fa-cc-amex"></i></li>
+                    <li><i class="fa fa-cc-paypal"></i></li>
+                </ul> 
+            </div>
+        </div>
+    </div>
+    <!--/.footer-bottom--> 
+</footer>
     </body>
 </html>
